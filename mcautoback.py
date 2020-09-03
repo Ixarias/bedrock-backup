@@ -30,12 +30,7 @@ def bedrockpathtostr(worldname):
     
     return('Not Found')
 
-
-    
-    
 def backup():
-
-
     while True:
         worldname = input('Please enter world name: ')
         bedrockpath = bedrockpathtostr(worldname)

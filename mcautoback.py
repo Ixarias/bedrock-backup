@@ -19,7 +19,7 @@ def is_admin():
     except:
         return False
 
-def bedrockpathtostring(worldname):
+def bedrockpathtostr(worldname):
     worldpath = path.expandvars('%localappdata%/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang/minecraftWorlds')
 
     result = [y for x in os.walk(worldpath) for y in glob(os.path.join(x[0], '*.txt'))]
@@ -28,18 +28,33 @@ def bedrockpathtostring(worldname):
         if txtfile.readline() == worldname:
             return x[:-13]
     
+    return('Not Found')
+
+
+    
+    
 def backup():
 
-    worldname = input('Please enter world name: ')
-    bedrockpath = bedrockpathtostring(worldname)
-    backuppath = path.expandvars('%localappdata%/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang/minecraftWorlds/' + worldname + "_" + datetime.now().strftime('%Y_%m_%d_%H_%M_%S'))
+
+    while True:
+        worldname = input('Please enter world name: ')
+        bedrockpath = bedrockpathtostr(worldname)
+        if bedrockpath == 'Not Found':
+            print('That world was not found, try again')
+            continue
+        else:
+            break  
+    backuppath = path.expandvars('%localappdata%/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang/minecraftWorlds/' + worldname + "_")
     bedrockname = bedrockpath[119:]
 
+    print(backuppath)
     print(f'Backing up world folder: {bedrockname} ({worldname})')
 
     while True:
         try:
-            shutil.make_archive(backuppath, 'zip', bedrockpath)
+            fullpath = backuppath + str(datetime.now().strftime('%Y_%m_%d_%H_%M_%S'))
+            print(fullpath)
+            shutil.make_archive(fullpath, 'zip', bedrockpath)
             print(f"New Backup made at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
             print('Waiting ' + str(WaitTime) + ' seconds')
             sleep(WaitTime)
@@ -52,4 +67,5 @@ if __name__ == '__main__':
     if RunAsAdmin == 1 and not is_admin():
         #re-run as admin
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+
     backup()

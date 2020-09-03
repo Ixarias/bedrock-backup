@@ -4,6 +4,8 @@ Minecraft Bedrock Edition world backup tool
 
 to-do:
 
-folder organized backups
+-remove premature backups
 
-user friendly UI
+-folder organized backups
+
+-user friendly UI

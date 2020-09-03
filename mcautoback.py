@@ -45,9 +45,9 @@ def backup():
 
     while True:
         try:
-            fullpath = backuppath + str(datetime.now().strftime('%Y_%m_%d_%H_%M_%S'))
+            fullpath = backuppath + str(datetime.now().strftime('%Y_%m_%d_%H_%M'))
             shutil.make_archive(fullpath, 'zip', bedrockpath)
-            print(f"New Backup made at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            print(f"New Backup made at: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
             print('Waiting ' + str(WaitTime) + ' seconds')
             sleep(WaitTime)
         except:

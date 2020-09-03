@@ -10,7 +10,7 @@ from glob import glob
 WaitTime = 300
 #// Reduces wait time in case of backup failure by a factor of FailMod (Default: 5)
 FailMod = 5
-#// Wether to require admin permissions
+#// Wether to require admin permissions (Default: 0)
 RunAsAdmin = 0
 
 def is_admin():

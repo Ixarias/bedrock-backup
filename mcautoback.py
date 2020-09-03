@@ -41,14 +41,11 @@ def backup():
             break  
     backuppath = path.expandvars('%localappdata%/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang/minecraftWorlds/' + worldname + "_")
     bedrockname = bedrockpath[119:]
-
-    print(backuppath)
     print(f'Backing up world folder: {bedrockname} ({worldname})')
 
     while True:
         try:
             fullpath = backuppath + str(datetime.now().strftime('%Y_%m_%d_%H_%M_%S'))
-            print(fullpath)
             shutil.make_archive(fullpath, 'zip', bedrockpath)
             print(f"New Backup made at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
             print('Waiting ' + str(WaitTime) + ' seconds')

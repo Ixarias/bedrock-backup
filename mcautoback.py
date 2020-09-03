@@ -41,7 +41,7 @@ def backup():
         try:
             shutil.make_archive(backuppath, 'zip', bedrockpath)
             print(f"New Backup made at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-            print('Waiting' + str(WaitTime) + seconds)
+            print('Waiting' + str(WaitTime) + ' seconds')
             sleep(WaitTime)
         except:
             print('Backup unavailable while the Minecraft World is running')

@@ -4,10 +4,10 @@ Minecraft Bedrock Edition world backup tool
 
 to-do:
 
--remove premature backups
+- remove premature backups
 
--folder organized backups
+- folder organized backups
 
--user friendly UI
+- user friendly UI
 
--spawn threads to have multiple backups running simultaneously
+- spawn threads to have multiple backups running simultaneously

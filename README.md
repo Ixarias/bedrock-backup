@@ -9,3 +9,5 @@ to-do:
 -folder organized backups
 
 -user friendly UI
+
+-spawn threads to have multiple backups running simultaneously

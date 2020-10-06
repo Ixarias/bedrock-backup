@@ -50,10 +50,13 @@ def backup():
             print(f"New Backup made at: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
             print('Waiting ' + str(WaitTime) + ' seconds')
             sleep(WaitTime)
+        except KeyboardInterrupt:
+            sys.exit()
         except:
             print('Backup unavailable while the Minecraft World is running')
             print('Trying again in ' + str(WaitTime/FailMod) + ' seconds')
             sleep(WaitTime/FailMod)
+        
         
 if __name__ == '__main__':
     if RunAsAdmin == 1 and not is_admin():

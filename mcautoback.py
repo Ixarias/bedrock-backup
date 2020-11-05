@@ -51,7 +51,7 @@ def async_sleep(sender, sleeptime):
     sleep(sleeptime)
 
 def backupcallback(sender, data):
-    backupinfo = (get_value("World Name"), get_value("Wait Time"), get_value("Failure Wait Time"))
+    backupinfo = (get_value("World Name"), get_value("Wait Time"), get_value("Fail Wait Time"))
     worldinfo = findworld(backupinfo[0])
     if (dobackup(worldinfo[0], worldinfo[1]) == 1):
         add_text(f"Backup created at {datetime.now().strftime('[%Y_%m_%d]_[%H_%M]')}", parent="MCAutoBack")
@@ -61,14 +61,13 @@ def backupcallback(sender, data):
         run_async_function(async_sleep, backupinfo[2], return_handler=backupcallback)
     
 if __name__ == '__main__':
-    core.set_main_window_size(600, 200)
+    core.set_main_window_size(480, 400)
 
     with simple.window("MCAutoBack"):
         core.add_text("MCAutoBack")
         core.add_input_text("World Name", default_value="Cube World")
         core.add_button("Backup", callback=backupcallback)
         core.add_slider_int("Wait Time", default_value=300, min_value=30, max_value=1200)
-        core.add_slider_int("Failure Wait Time", default_value=30, min_value=5, max_value=300)
+        core.add_slider_int("Fail Wait Time", default_value=30, min_value=5, max_value=300)
 
-    show_logger()
     start_dearpygui(primary_window="MCAutoBack")

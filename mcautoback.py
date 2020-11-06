@@ -44,21 +44,24 @@ def async_sleep(sender, sleeptime):
 def backupcallback(sender, data):
     backupinfo = (get_value("World Name"), get_value("Wait Time"), get_value("Fail Wait Time"))
     worldinfo = findworld(backupinfo[0])
-    if (dobackup(worldinfo[0], worldinfo[1]) == 1):
-        add_text(f"Backup created at {datetime.now().strftime('[%Y_%m_%d]_[%H_%M]')}", parent="MCAutoBack")
-        run_async_function(async_sleep, backupinfo[1], return_handler=backupcallback)
+    if (worldinfo != 0): 
+        if (dobackup(worldinfo[0], worldinfo[1]) == 1):
+            add_text(f"Backup created at {datetime.now().strftime('[%Y_%m_%d]_[%H_%M]')}", parent="main")
+            run_async_function(async_sleep, backupinfo[1], return_handler=backupcallback)
+        else:
+            add_text(f'Backup failed. Is the world being accessed?', parent="main")
+            run_async_function(async_sleep, backupinfo[2], return_handler=backupcallback)
     else:
-        add_text(f'Backup failed. Is the world being accessed?', parent="MCAutoBack")
-        run_async_function(async_sleep, backupinfo[2], return_handler=backupcallback)
+        add_text(f'World ({backupinfo[0]}) not found', parent="main")
     
 if __name__ == '__main__':
     set_main_window_size(480, 400)
 
-    with window("MCAutoBack"):
+    with window("main"):
         add_text("MCAutoBack")
         add_input_text("World Name", default_value="Cube World")
         add_button("Backup", callback=backupcallback)
         add_slider_int("Wait Time", default_value=300, min_value=30, max_value=1200)
         add_slider_int("Fail Wait Time", default_value=30, min_value=5, max_value=300)
 
-    start_dearpygui(primary_window="MCAutoBack")
+    start_dearpygui(primary_window="main")

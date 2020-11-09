@@ -28,7 +28,7 @@ def findworld(worldname):
 
 def dobackup(backuppath, bedrockpath):
         try:
-            fullpath = backuppath + str(datetime.now().strftime('[%Y_%m_%d]_[%H_%M]'))
+            fullpath = backuppath[:-17] + str('/Backup/') + str(datetime.now().strftime('[%Y_%m_%d]_[%H_%M]'))
             shutil.make_archive(fullpath, 'zip', bedrockpath)
             rename(fullpath + '.zip', fullpath + '.mcworld')
             log_debug(f"New Backup made at: {datetime.now().strftime('%Y-%m-%d %H:%M')}")

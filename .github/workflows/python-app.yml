@@ -34,13 +34,15 @@ jobs:
     - name: Package Application
       uses: JackMcKew/pyinstaller-action-windows@main
       with:
-        path: ${{ github.workspace }}/mcautoback.py
+        path: ${{ github.workspace }}/
+      run: |
+        ls -a
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
         name: name-of-artifact
-        path: src/dist/mcautoback.exe
+        path: src/dist/
 
     # currently no tests so pytest is commented out (TODO: BE A GOOD PROGRAMMER)
     #- name: Test with pytest

@@ -25,7 +25,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: mcautoback
-        path: src/dist/
+        path: src/dist/mcautoback
 
     # currently no tests so pytest is commented out (TODO: BE A GOOD PROGRAMMER)
     #- name: Test with pytest

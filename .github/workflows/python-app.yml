@@ -16,15 +16,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: Package Application
       uses: JackMcKew/pyinstaller-action-windows@main
       with:
         path: src
 
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v2
       with:
-        name: mcautoback
+        name: name-of-artifact
         path: src/dist/windows
 
     # currently no tests so pytest is commented out (TODO: BE A GOOD PROGRAMMER)

@@ -34,7 +34,7 @@ jobs:
     - name: Package Application
       uses: JackMcKew/pyinstaller-action-windows@main
       with:
-        path: ${{ github.workspace }}/
+        path: /home/runner/work/mcautoback/mcautoback.py
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2

@@ -1,1 +1,2 @@
 dearpygui==0.5.66
+pyinstaller @ https://github.com/pyinstaller/pyinstaller/archive/develop.zip

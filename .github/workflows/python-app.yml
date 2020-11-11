@@ -17,15 +17,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-- name: PyInstaller Windows
-  uses: JackMcKew/pyinstaller-action-windows@v0.1.2
+    - name: PyInstaller Windows
+      uses: JackMcKew/pyinstaller-action-windows@v0.1.2
       with:
         path: src
 
     - uses: actions/upload-artifact@v2
       with:
         name: mcautoback
-        path: src/dist/windows
+        path: src/dist/windows/
 
     # currently no tests so pytest is commented out (TODO: BE A GOOD PROGRAMMER)
     #- name: Test with pytest

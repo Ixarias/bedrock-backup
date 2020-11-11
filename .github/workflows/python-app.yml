@@ -1,7 +1,4 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
-name: Python application
+name: Package exe with PyInstaller - Windows
 
 on:
   push:
@@ -16,18 +13,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
     - name: PyInstaller Windows
-      uses: JackMcKew/pyinstaller-action-windows@v0.1.2
+      uses: JackMcKew/pyinstaller-action-windows@main
       with:
         path: src
 
     - uses: actions/upload-artifact@v2
       with:
-        name: mcautoback
-        path: src/dist/windows/
+        name: my-exe
+        path: src/dist/windows # or path/to/artifact
 
-    # currently no tests so pytest is commented out (TODO: BE A GOOD PROGRAMMER)
-    #- name: Test with pytest
-    #  run: |
-    #    pytest

@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on:  	macos-11.0
+    runs-on: ubuntu-latest
 
     steps:
     - name: Complete checkout
@@ -38,7 +38,7 @@ jobs:
         path: src
 
     - name: Upload artifact
-    - uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2
       with:
         name: mcautoback
         path: src/dist/windows/main/main.py # or path/to/artifact

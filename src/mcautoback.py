@@ -26,9 +26,9 @@ def findworld(worldname):
     bedrockname = bedrockpath[119:]
     return backuppath, bedrockpath, bedrockname
 
-def dobackup(backuppath, bedrockpath):
+def dobackup(backuppath, bedrockpath, worldname):
         try:
-            fullpath = backuppath[:-17] + str('/Backup/') + str(datetime.now().strftime('[%Y_%m_%d]_[%H_%M]'))
+            fullpath = backuppath[:-27] + str('/minecraftWorldsBackup/') + str(f'{worldname}/') + str(datetime.now().strftime('[%Y_%m_%d]_[%H_%M]'))
             shutil.make_archive(fullpath, 'zip', bedrockpath)
             rename(fullpath + '.zip', fullpath + '.mcworld')
             log_debug(f"New Backup made at: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
@@ -45,7 +45,7 @@ def backupcallback(sender, data):
     backupinfo = (get_value("World Name"), get_value("Wait Time"), get_value("Fail Wait Time"))
     worldinfo = findworld(backupinfo[0])
     if (worldinfo != 0): 
-        if (dobackup(worldinfo[0], worldinfo[1]) == 1):
+        if (dobackup(worldinfo[0], worldinfo[1], backupinfo[0]) == 1):
             add_text(f"Backup created at {datetime.now().strftime('[%Y_%m_%d]_[%H_%M]')}", parent="main")
             run_async_function(async_sleep, backupinfo[1], return_handler=backupcallback)
         else:

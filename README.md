@@ -2,12 +2,10 @@
 
 Minecraft Bedrock Edition world backup tool
 
-to-do:
+## Usage
 
-- remove premature backups
-
-- folder organized backups
-
-- user friendly UI
-
-- spawn threads to have multiple backups running simultaneously
+ - Download the latest release
+ - Run the executable
+ - Enter world name (as seen in the menu)
+ - Configure variables (interval between successful and unsuccessful backups)
+ - Run backup

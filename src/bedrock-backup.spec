@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['mcautoback.py'],
+a = Analysis(['bedrock-backup.py'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -22,7 +22,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='mcautoback',
+          name='bedrock-backup',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,

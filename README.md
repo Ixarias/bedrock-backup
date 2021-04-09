@@ -1,4 +1,4 @@
-# mcautoback
+# bedrock-backup
 
 Minecraft Bedrock Edition world backup tool
 
